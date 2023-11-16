@@ -627,7 +627,6 @@ nav {
   
 }
 
-<<<<<<< HEAD
 .background-playlist{
   background-image: url("../images/bg3.jpg");
   background-position: center;
@@ -642,7 +641,7 @@ nav {
   z-index: -1;
   
 }
-=======
+
 #thefile {
   position: fixed;
   top: 10px;
@@ -659,4 +658,3 @@ nav {
   height: 100px;
   overflow-y: hidden;
 }
->>>>>>> ae5faf2224b0f412d65421f674b6655bc0846b5c

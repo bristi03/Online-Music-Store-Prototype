@@ -430,7 +430,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (location.href.endsWith("search")) {
         displayAllSongs();
     }
-    else if(location.href.startsWith("http://127.0.0.1:8080/playlist")){
+    else if(location.href.includes("playlist")){
         let query_params = new URLSearchParams(window.location.search);
         let category = query_params.get("category");
         filter_songs(category);

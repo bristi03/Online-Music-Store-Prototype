@@ -1,0 +1,60 @@
+{
+    "songs": [
+        {
+            "name": "Chale Aana",
+            "artist": "Armaan Malik",
+            "location": "./static/assets/Chale aana.mp3",
+            "image": "./static/images/artist_image.jpeg",
+            "liked": true,
+            "id": 0
+        },
+        {
+            "name": "Closer",
+            "artist": "The Chainsmokers",
+            "location": "static/assets/Closer.mp3",
+            "image": "static/images/content/nggyp.jpg",
+            "liked": false,
+            "id": 1
+        },
+        {
+            "name": "Keeping It",
+            "artist": "Sou",
+            "location": "static/assets/keepingIt.mp3",
+            "image": "static/images/content/keepingIt.png",
+            "liked": false,
+            "id": 2
+        },
+        {
+            "name": "Eye of the Tiger",
+            "artist": "Surviour",
+            "location": "static/assets/eyeTiger.mp3",
+            "image": "static/images/content/survivor.jpg",
+            "liked": false,
+            "id": 3
+        },
+        {
+            "name": "Kenny G Collection",
+            "artist": "Kenny G",
+            "location": "static/assets/kenny.mp3",
+            "image": "static/images/content/kennyg.jpg",
+            "liked": false,
+            "id": 4
+        },
+        {
+            "name": "Noctornal",
+            "artist": "The Midnight",
+            "location": "static/assets/noctornal.mp3",
+            "image": "static/images/content/noctornal.jpg",
+            "liked": true,
+            "id": 5
+        },
+        {
+            "name": "Unravel",
+            "artist": "TK",
+            "location": "static/assets/unravel.mp3",
+            "image": "static/images/content/unravel.jpg",
+            "liked": false,
+            "id": 6
+        }
+    ]
+}
