@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<<<<<<< HEAD
+    <title>AudioWaves-Web Player</title>
+    <link rel="icon" href="static/images/logo.png" />
+=======
+    <title>AudioWaves - Web Player</title>
+    <link rel="icon" href="../static/images/favicon.ico" />
+>>>>>>> 45cd55d70b12d12a95f0906c2c1e5672244a10ed
+    <link rel="stylesheet" href="../static/css/style.css">
+
+    <link
+    rel="stylesheet"
+    href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+    crossorigin="anonymous"
+    />
+    <script type="application/javascript" defer src="../static/js/script.js"></script>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+      /* Your existing CSS styles */
+      /* Add any additional styles for the modal here */
+      .modal {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: #fafae8;
+        padding: 20px;
+        border: 1px solid #ccc;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+    </style>
+</head>
+<body>
+
+  <!-- Sidebar -->
+
+  <div id="sidebar">
+      <div id="logo">
+          <img src="../static/images/logo.png" alt="spotify logo" style="filter: invert();height: 50px;width: 55px;"/>
+          <div style="color: #fafae8; align-items: center;text-align: center;margin-top: 30px; font-size: 1.5rem; font-weight: bold;">AudioWaves</div>
+      </div>
+      <div id="navigation">
+          <a href="#main" class="navigation_item">
+              <i class="fas fa-home"></i> 
+              <span>Home</span>
+          </a>
+          <a href="/search" class="navigation_item">
+            <i class="fas fa-search"></i>
+            <span>Search</span>
+        </a>
+          <a href="#" class="navigation_item">
+              <i class="fas fa-grip-lines-vertical"></i> 
+              <span>Your Library</span>
+          </a>
+      </div>
+      <div id="cta">
+          <a href="#" class="cta_item">
+              <span class="cta__icon" id="plus">
+                  <i class="fas fa-plus"></i>
+              </span> 
+              <span>Create Playlist</span>
+          </a>
+          <a href="#liked_songs" class="cta_item">
+              <span class="cta__icon" id="heart">
+                  <i class="fas fa-heart"></i>
+              </span> 
+              <span>Liked Songs</span>
+          </a>
+          
+      </div>
+      <hr class="line" />
+      <div id="bottom">
+          <!--<ul id="music__list">
+              <li class="music__item"><a href="#" class="music__link">Music Hip-Hop 1</a></li>
+              <li class="music__item"><a href="#" class="music__link">Music Hip-Hop 2</a></li>
+              <li class="music__item"><a href="#" class="music__link">Music Hip-Hop 3</a></li>
+          </ul>
+          <div class="download__item">
+              <a href="#" id="download__link">
+                  <i class="fas fa-arrow-circle-down"></i> Install App
+              </a>     
+          </div>-->
+          {% if user.IsAdmin %}
+          <div class="download__item">
+            <a href="#" id="Add_song" onclick="openModal()">
+              <i class="fas fa-cloud-upload"></i> Add Song
+            </a>
+          {% endif %}
+          </div>
+    </div>
+  </div>
+
+  <!-- Content Section, inclues the navbar and the main content -->
+
+  <div id="content">
+
+    <!-- NavBar -->
+
+      <nav>
+          <div class="navigate">
+            <i class="far fa-chevron-left"></i>
+            <i class="far fa-chevron-right"></i>
+          </div>
+          <div class="buttons">
+            <button class="btn btn-upgrade" onclick="upgrade()">Upgrade</button>
+            <button class="btn btn-upgrade">Contact Us</button>
+            <div class="profile-dropdown">
+              <div class="visible">
+                <img src="../static/images/user.png" alt="User" />
+                <span id="user">Hello {{user.Name}}</span>
+                <i class="fas fa-sort-down arrow"></i>
+              </div>
+              <div class="hidden">
+                <ul>
+                  <li class="link">
+                    Account
+                    <i class="far fa-external-link-alt"></i>
+                  </li>
+                  <li>Profile</li>
+                  <li class="link" onclick="upgrade()">
+                    Upgrade to Premium
+                    <i class="far fa-external-link-alt"></i>
+                  </li>
+                  <li onclick="confirm_logout()">Log out</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </nav>
+
+        <!-- Main Content -->
+
+        <main id="main">
+
+          <!-- Top Card Collection -->
+
+          <div class="card__container">
+            <div class="card__title">
+              <h1 class="card__heading">Trending Today</h1>
+            </div>
+            <div class="card__collection">
+              <div class="card_top" onclick="playlist_bengali()">
+                <img src="../static/images/content/jawlphoring.jfif" alt="Bengali Hits" />
+                <div class="card__info">
+                  <p style="display: none;" id="bengali">Bengali</p>
+                  <p class="card_name">Bengali Hits</p>
+                  <p class="card_artist">Anupam Roy and more</p>
+                </div>
+                <i class="fas fa-circle"></i>
+              </div>
+              <div class="card_top" onclick="playlist_hindi()">
+                <img src="../static/images/content/hindi-hits.jpg" alt="Bollywood Hits" />
+                <div class="card__info">
+                  <p style="display: none;" id="hindi">Hindi</p>
+                  <p class="card_name">Bollywood Hits</p>
+                  <p class="card_artist">Arijit Singh and more</p>
+                </div>
+              </div>
+              <div class="card_top" onclick="playlist_english()">
+                <img src="../static/images/content/eng-hit.webp" alt="English Hits" />
+                <div class="card__info">
+                  <p style="display: none;" id="english">English</p>
+                  <p class="card_name">English Hits</p>
+                  <p class="card_artist">Ed Sheeran and more</p>
+                </div>
+              </div>
+              <div class="card_top" onclick="playlist_romantic()">
+                <img src="../static/images/content/romantic.jfif" alt="Romantic Hits" />
+                <div class="card__info">
+                  <p style="display: none;" id="romantic">Romantic</p>
+                  <p class="card_name">Romantic Hits</p>
+                  <p class="card_artist">Arijit Singh and more</p>
+                </div>
+              </div>
+              <div class="card_top" onclick="playlist_dance()">
+                <img src="../static/images/content/party.jfif" alt="Dance Hits" />
+                <div class="card__info">
+                  <p style="display: none;" id="dance">Dance</p>
+                  <p class="card_name">Party Mix</p>
+                  <p class="card_artist">Party dance songs</p>
+                </div>
+              </div>
+              <div class="card_top" onclick="playlist_pop()">
+                <img src="../static/images/content/pop.webp" alt="Lofi" />
+                <div class="card__info">
+                  <p style="display: none;" id="pop">Pop</p>
+                  <p class="card_name">Pop Music</p>
+                  <p class="card_artist">Playlist</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Common Card Containers  -->
+
+          <div class="card__container" id="liked_songs">
+            <div class="card__title">
+              <h1 class="card__heading">Your Liked Songs</h1>
+              <p>SEE ALL</p>
+            </div>
+
+            <!-- Card Collection, music content is added dynamically with JavaScript -->
+
+            <div class="card__collection_main"></div>
+          </div>
+          <div class="card__container">
+            <div class="card__title">
+              <h1 class="card__heading">Your Collection</h1>
+              <p>SEE ALL</p>
+            </div>
+
+            <!-- Card Collection, music content is added dynamically with JavaScript -->
+
+            <div class="card__collection_main reverse"></div>
+          </div>
+          <div class="card__container">
+            <div class="card__title">
+              <h1 class="card__heading">Your Songs</h1>
+              <p>SEE ALL</p>
+            </div>
+
+            <!-- Card Collection, music content is added dynamically with JavaScript -->
+
+            <!-- Card Collection, music content is added dynamically with JavaScript -->
+
+            <div class="card__collection_main reverse"></div>
+          </div>
+        </main>
+  </div>
+
+  <!-- Music Player Head -->
+
+  <div id="player" >
+      <canvas id="canvas"></canvas>
+    <div id="player__artist">
+      <img src="../static/images/artist_image.jpeg" alt="artist image" class="artist_image" />
+      <span class="artist_details">
+        <a class="song">Eternal Youth</a>
+        <a class="artist">RUDE</a>
+      </span>
+      <i class="fas fa-heart likeBtn" title="Like Song"></i>
+      <i class="fas fa-external-link-alt"></i>
+      <i class="fas fa-arrow-circle-down" title="Purchase"></i>
+    </div>
+    <div id="player__controls">
+      <div id="controls">
+        <i class="fas fa-random btn"  id="shuffle-btn" title="Enable Shuffle"></i>
+        <i class="fas fa-step-backward btn" id="backward-btn" title="Previous"></i>
+        <i class="fas fa-play-circle btn" id="playBtn" title="Play" style="display: inline-block; font-size: 1.3rem;"></i>
+        <i class="fas fa-pause-circle btn" id="pauseBtn" title="Pause" style="display: inline-block; font-size: 1.3rem;"></i>
+        <i class="fas fa-step-forward btn" id="forward-btn" title="Next"></i>
+        <i class="fas fa-retweet btn" id="repeat-btn" title="Repeat"></i>
+      </div>
+      <div id="timeline">
+        <div id="current-time"></div>
+          <input type="range" value="0" class="player_line" id="seek-bar">
+        <div class="duraton-time" id="end_time">3:25</div>
+      </div>
+    </div>
+    <div id="player__cta">
+      <i class="fas fa-music" title="Lyrics"></i>
+      <i class="fas fa-list" title="Queue"></i>
+      <i class="fas fa-desktop" title="Connect to a Device"></i>
+      <i class="fas fa-volume-up" id="mute" title="Volume" onclick="mute_unmute()"></i>
+      <input type="range" class="player_line" id="volume-bar" min="0" max="1" step="0.1" value="1">
+    </div>
+    
+  </div>
+
+<div id="modal-container">
+  <div class="modal" id="addSongModal">
+    <h2>Add New Song</h2>
+    <div id="addSongModalbody">
+    <label for="songName">Song Name:</label>
+    <input type="text" id="songName" placeholder="Enter song name"><br><br>
+
+    <label for="artistName">Artist Name:</label>
+    <input type="text" id="artistName" placeholder="Enter artist name"><br><br>
+
+    <label for="category">Category:</label>
+    <input type="text" id="category" placeholder="Enter category"><br><br>
+
+    <label for="songFile">Upload Song (MP3):</label>
+    <input type="file" id="songFile" accept=".mp3"><br><br>
+
+    <label for="imageFile">Upload Image:</label>
+    <input type="file" id="imageFile" accept="image/*"><br><br>
+
+    <button onclick="addSong()">Submit</button>
+    <button onclick="closeModal()">Close</button>
+</div>
+
+  </div>
+</div>
+
+<script>
+  // Function to display the modal
+  function openModal() {
+    document.getElementById('addSongModal').style.display = 'block';
+  }
+
+  // Function to close the modal
+  function closeModal() {
+      // Hide the modal
+      document.getElementById('addSongModal').style.display = 'none';
+
+      // Clear input values in the modal
+      const inputs = document.querySelectorAll('#addSongModal input');
+      inputs.forEach(input => {
+        input.value = '';
+      });
+    }
+
+
+  // Function to add the song (to be customized based on your needs)
+  function addSong() {
+    // Retrieve the input values
+    const songName = document.getElementById('songName').value;
+    const artistName = document.getElementById('artistName').value;
+    const songFile = document.getElementById('songFile').files[0];
+    const imageFile = document.getElementById('imageFile').files[0];
+
+    // Handle the uploaded files here (e.g., send them to the server using Fetch API)
+
+    // For demo purposes, log the retrieved values
+    console.log('Song Name: ', songName);
+    console.log('Artist Name: ', artistName);
+    console.log('Song File: ', songFile);
+    console.log('Image File: ', imageFile);
+
+    // Close the modal after handling the data
+    closeModal();
+  }
+</script>
+</body>
+</html>

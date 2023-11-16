@@ -1,0 +1,132 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    box-sizing: border-box;
+}
+.heading{
+    text-align: center;
+    color: #f8f6fb;
+    margin: 30px;
+
+}
+.bg{
+    background-image: url("../images/bg5.jpg");
+    filter: blur(2px);
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    z-index: -1;
+}
+
+.container{
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+}
+
+.form-box{
+    width: 90%;
+    max-width: 450px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(25,25,27,0.5);
+    padding: 40px 60px 70px;
+    text-align: center;
+    border-radius: 20px;
+}
+
+.form-box h2{
+    font-size: 30px;
+    margin-top: 20px;
+    margin-bottom: 60px;
+    color: #f9f7fb;
+    position: relative;
+}
+
+.form-box h1::after{
+    content: '';
+    width: 30px;
+    height: 40px;
+    border-radius: 3px;
+    background: #3c00a0;
+    position: absolute;
+    bottom: -12px;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+.input-field{
+    background: #eaeaea;
+    margin: 15px 0;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    max-height: 65px;
+    transition: max-height 0.5s;
+    overflow: hidden;
+}
+
+input{
+    width: 100%;
+    background: transparent;
+    border:0;
+    outline: 0;
+    padding: 18px 15px;
+}
+
+.input-field i{
+    margin-left: 15px;
+    color: #999;
+
+}
+
+form p{
+    text-align: left;
+    font-size: 13px;
+}
+
+form p a{
+    text-decoration: none;
+    color: #3c00a0;
+}
+
+.btn-field{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn-field button{
+    flex-basis: 48%;
+    background: #3c00a0;
+    color: #fff;
+    height: 40px;
+    border-radius: 20px;
+    border: 0;
+    outline: 0;
+    cursor: pointer;
+    transition: background 1s;
+}
+
+.input-group{
+    height: 280px;
+}
+
+.btn-field button.disable{
+    background: #eaeaea;
+    color: #3c00a0;
+}
+
+#link{
+    text-decoration: none;
+    color: #eaeaea;
+}

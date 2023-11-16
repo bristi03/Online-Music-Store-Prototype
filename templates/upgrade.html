@@ -1,0 +1,165 @@
+<!-- search.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<<<<<<< HEAD
+        <title>AudioWaves-Web Player</title>
+        <link rel="icon" href="static/images/logo.png" />
+=======
+        
+        <title>AudioWaves - Web Player</title>
+        <link rel="icon" href="../static/images/favicon.ico" />
+>>>>>>> 45cd55d70b12d12a95f0906c2c1e5672244a10ed
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        
+        <link rel="icon" href="../static/images/favicon.ico" />
+        <link rel="stylesheet" href="../static/css/style.css">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <link
+        rel="stylesheet"
+        href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+        crossorigin="anonymous"
+        />
+        <script type="application/javascript" defer src="../static/js/script.js"></script>
+</head>
+<body>
+<!-- Sidebar -->
+
+<div id="sidebar">
+    <div id="logo">
+        <img src="../static/images/logo.png" alt="spotify logo" style="filter: invert();height: 50px;width: 55px;" />
+        <div
+            style="color: #fafae8; align-items: center;text-align: center;margin-top: 30px; font-size: 1.5rem; font-weight: bold;">
+            AudioWaves</div>
+    </div>
+    <div id="navigation">
+        <a href="/" class="navigation_item">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+        </a>
+        <a href="/search" class="navigation_item">
+            <i class="fas fa-search"></i>
+            <span>Search</span>
+        </a>
+        <a href="#" class="navigation_item">
+            <i class="fas fa-grip-lines-vertical"></i>
+            <span>Your Library</span>
+        </a>
+    </div>
+    <div id="cta">
+        <a href="#" class="cta_item">
+            <span class="cta__icon" id="plus">
+                <i class="fas fa-plus"></i>
+            </span>
+            <span>Create Playlist</span>
+        </a>
+        <a href="/home" class="cta_item">
+            <span class="cta__icon" id="heart">
+                <i class="fas fa-heart"></i>
+            </span>
+            <span>Liked Songs</span>
+        </a>
+
+    </div>
+    <hr class="line" />
+    
+</div>
+<div id="content">
+<main id="main">
+<div class="background-playlist"></div>
+<div>
+    <h1 style="color: white; margin-bottom: 50px; display: flex; justify-content: center; align-items: center; font-weight: bold;padding: 20px;" >Choose Your Plan</h1>
+
+    <div class="container" style="align-items: center; justify-content: center;">
+    
+        <div class="row no-gutters justify-content-center" id="premiumcards" style="justify-content: center;">
+            <div class="column col-lg-4 col-md-6  row__item"  >
+                <div class="box1 featured" data-aos="fade-right">
+                    <center><h3>Basic</h3>
+                    <h4>₹49&nbsp;<span>per month</span></h4></center>
+                    <br>
+                    <ul>
+                      <li><i class="bx bx-check"></i> Sound Quality: Good</li>
+                      <li><i class="bx bx-check"></i> Purchasing charges apply</li>
+                      <li><i class="bx bx-check"></i> Devices you can use to listen:</li>
+                      <ul class="devices">
+                        <li>Mobile</li>
+                        <li>Tablet</li>
+                        <li>Computer</li>
+                      </ul>
+                    </ul>
+                    <button style="padding: 5px;border-radius: 5px; background-color: red;color: #fafae8;">Get Started</button>
+                    <!--<form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_HRAIXySB68JwYQ" async> </script> </form> -->
+                  </div>
+        
+            </div>
+            <div class="column col-lg-4 col-md-6 row__item " >
+                <div class="box2 featured" data-aos="fade-up">
+                    <center><h3>Premium</h3>
+                    <h4>₹499&nbsp;<span>per month</span></h4></center>
+                    <br>
+                    <ul>
+                      <li><i class="bx bx-check"></i> Audio Quality: Best</li>
+                      <li><i class="bx bx-check"></i> All contents downloadable</li>
+                      <li><i class="bx bx-check"></i> Devices you can use to listen:</li>
+                      <ul class="devices">
+                        <li>Mobile</li>
+                        <li>Tablet</li>
+                        <li>Computer</li>
+                      </ul>
+                    </ul>
+                    <button style="padding: 5px;border-radius: 5px; background-color: red;color: #fafae8;">Get Started</button>
+                 <!-- <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_HRAVPPvSZTE7fg" async> </script> </form> -->
+        
+                  </div>
+            </div>
+            <div class="column col-lg-4 col-md-6 row__item" >
+                
+          <div class="box3 featured" data-aos="fade-left">
+            <center><h3>Standard</h3>
+            <h4>₹349&nbsp;<span>per month</span></h4></center>
+            <br>
+            <ul>
+              <li><i class="bx bx-check"></i> Audio Quality: Better</li>
+              <li><i class="bx bx-check"></i>Single tracks downloadable</li>
+              <li><i class="bx bx-check"></i> Devices you can use to listen:</li>
+              <ul class="devices">
+                <li>Mobile</li>
+                <li>Tablet</li>
+                <li>Computer</li>
+              </ul>
+            </ul>
+            <button style="padding: 5px;border-radius: 5px; background-color: red;color: #fafae8;">Get Started</button>
+    <!-- <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_HRBYgiJB9odvoA" async> </script> </form> -->
+    
+    
+    
+      </div>
+    
+    </div>
+    </div>
+      </div>
+
+</main>
+</div>
+
+</body>
+<style>
+  .navigation_item:hover{
+    background: var(--background-color-active);
+    opacity: 1;
+    color: #fafae8;
+}
+</style>
+
+</html>
+
+

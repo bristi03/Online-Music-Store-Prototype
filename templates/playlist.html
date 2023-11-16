@@ -1,0 +1,120 @@
+<!-- search.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<<<<<<< HEAD
+        <title>AudioWaves-Web Player</title>
+        <link rel="icon" href="static/images/logo.png" />
+=======
+        
+        <title>AudioWaves - Web Player</title>
+        <link rel="icon" href="../static/images/favicon.ico" />
+>>>>>>> 45cd55d70b12d12a95f0906c2c1e5672244a10ed
+        <link rel="stylesheet" href="../static/css/style.css">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <link
+        rel="stylesheet"
+        href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+        crossorigin="anonymous"
+        />
+        <script type="application/javascript" defer src="../static/js/script.js"></script>
+    
+</head>
+<body>
+<!-- Sidebar -->
+
+<div id="sidebar">
+    <div id="logo">
+        <img src="../static/images/logo.png" alt="spotify logo" style="filter: invert();height: 50px;width: 55px;" />
+        <div
+            style="color: #fafae8; align-items: center;text-align: center;margin-top: 30px; font-size: 1.5rem; font-weight: bold;">
+            AudioWaves</div>
+    </div>
+    <div id="navigation">
+        <a href="/" class="navigation_item">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+        </a>
+        <a href="/search" class="navigation_item">
+            <i class="fas fa-search"></i>
+            <span>Search</span>
+        </a>
+        <a href="#" class="navigation_item">
+            <i class="fas fa-grip-lines-vertical"></i>
+            <span>Your Library</span>
+        </a>
+    </div>
+    <div id="cta">
+        <a href="#" class="cta_item">
+            <span class="cta__icon" id="plus">
+                <i class="fas fa-plus"></i>
+            </span>
+            <span>Create Playlist</span>
+        </a>
+        <a href="/home" class="cta_item">
+            <span class="cta__icon" id="heart">
+                <i class="fas fa-heart"></i>
+            </span>
+            <span>Liked Songs</span>
+        </a>
+
+    </div>
+    <hr class="line" />
+    
+</div>
+<div id="content">
+<main id="main">
+<div class="background-playlist"></div>
+<div>
+    <h1 style="color: white; padding: 20px;" >Trending {{ request.args.get("category") }} Songs</h1>
+
+    <div id="playlist-songs" class="tab__collection_main" style="width:100%;flex-wrap:wrap;margin:0;padding:0;height:fit-content;justify-content:space-around;">
+        <!-- Display search results here -->
+    </div>
+
+</main>
+</div>
+    <div id="player">
+        <canvas id="canvas"></canvas>
+        <div id="player__artist">
+            <img src="../static/images/artist_image.jpeg" alt="artist image" class="artist_image" />
+            <span class="artist_details">
+                <a class="song">Eternal Youth</a>
+                <a class="artist">RUDE</a>
+            </span>
+            <i class="fas fa-heart likeBtn" title="Like Song"></i>
+            <i class="fas fa-external-link-alt"></i>
+            <i class="fas fa-arrow-circle-down" title="Purchase"></i>
+        </div>
+        <div id="player__controls">
+            <div id="controls">
+                <i class="fas fa-random btn" id="shuffle-btn" title="Enable Shuffle"></i>
+                <i class="fas fa-step-backward btn" id="backward-btn" title="Previous"></i>
+                <i class="fas fa-play-circle btn" id="playBtn" title="Play"
+                    style="display: inline-block; font-size: 1.3rem;"></i>
+                <i class="fas fa-pause-circle btn" id="pauseBtn" title="Pause"
+                    style="display: inline-block; font-size: 1.3rem;"></i>
+                <i class="fas fa-step-forward btn" id="forward-btn" title="Next"></i>
+                <i class="fas fa-retweet btn" id="repeat-btn" title="Repeat"></i>
+            </div>
+            <div id="timeline">
+                <div id="current-time"></div>
+                <input type="range" value="0" class="player_line" id="seek-bar">
+                <div class="duraton-time" id="end_time">3:25</div>
+            </div>
+        </div>
+        <div id="player__cta">
+            <i class="fas fa-music" title="Lyrics"></i>
+            <i class="fas fa-list" title="Queue"></i>
+            <i class="fas fa-desktop" title="Connect to a Device"></i>
+            <i class="fas fa-volume-up" id="mute" title="Volume" onclick="mute_unmute()"></i>
+            <input type="range" class="player_line" id="volume-bar" min="0" max="1" step="0.1" value="1">
+        </div>
+    </div>
+</div>
+</body>
+</html>

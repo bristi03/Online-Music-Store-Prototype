@@ -1,0 +1,10 @@
+Flask==3.0.0
+gunicorn
+flask-pymongo==2.2.0  # Use the appropriate version of Flask-PyMongo
+pyrebase4  # Use the appropriate version of Pyrebase
+pytz==2022.5
+git+https://github.com/Pinaki19/flask-session.git
+requests==2.29.0
+pymongo==4.5.0
+pymongo[srv]
+mutagen

@@ -1,0 +1,174 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="icon" href="../static/images/favicon.ico" />
+    <link rel="stylesheet" href="../static/css/login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+</head>
+<body>
+    <div class="bg"></div>
+    <div class="container">
+        <div class="heading" >
+            <h1>Music For Everyone</h1>
+            <p>Turn On the Feeling,<br> with best quality music</p>
+        </div>
+        <div class="form-box">
+            <h2 id="title">Sign Up</h2>
+            <form id="login-form">
+                <div class="input-group">
+                    <div class="btn-field">
+                        <button type="button" class="disable" id="loginBtn">Log In</button>
+                        <button type="button" id="signupBtn">Sign Up</button>
+                    </div>
+
+                    <div class="input-field" id="Namefld">
+                        <i class="fa-solid fa-user"></i>
+                        <input type="text" id="Username" placeholder="Username" required>
+                    </div>
+
+                    <div class="input-field" id="mailFld">
+                        <i class="fa-solid fa-envelope"></i>
+                        <input type="email"  id="email" placeholder="Email" required>
+                    </div>
+
+                    <div class="input-field">
+                        <i class="fa-solid fa-lock"></i>
+                        <input type="password" id="signup-password" placeholder="Password" required>
+                    </div>
+
+                    <div class="input-field" id="confirmBtn">
+                        <i class="fa-solid fa-lock"></i>
+                        <input type="password" id="signup-confirm-password" placeholder="Confirm Password" required>
+                    </div>
+                    <p id="password-match-error" style="color: red; display: none;">Passwords do not match.</p>
+                    <p id="forgot-password" style="color: rgb(250, 249, 249); display: none;">Forgot Password?</p>
+                    <div class="btn-field" style="justify-content: center;">
+                        <button type="submit" id="submit-button">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            let signupBtn = document.getElementById("signupBtn");
+            let loginBtn = document.getElementById("loginBtn");
+            let mailFld = document.getElementById("mailFld");
+            let title = document.getElementById("title");
+            let confirmBtn= document.getElementById("confirmBtn");
+            let nameFld = document.getElementById("Namefld");
+            let forgotpass = document.getElementById("forgot-password")
+            let passwordMatchError = document.getElementById("password-match-error");
+
+            loginBtn.onclick = function(){
+                nameFld.style.maxHeight = "0";
+                document.getElementById("Username").required=false;
+                confirmBtn.style.maxHeight = "0";
+                document.getElementById("signup-confirm-password").required=false;
+                title.innerHTML= "Login";
+                loginBtn.classList.remove("disable");
+                signupBtn.classList.add("disable");
+                forgotpass.style.display= "block";
+                
+            }
+
+            signupBtn.onclick = function(){
+                nameFld.style.maxHeight = "60px";
+                confirmBtn.style.maxHeight = "60px";
+                nameFld.style.maxHeight = "60px";
+                title.innerHTML= "Sign Up";
+                loginBtn.classList.add("disable");
+                signupBtn.classList.remove("disable");
+
+                
+                
+            }
+            document.getElementById("login-form").addEventListener("submit", function (e) {
+                e.preventDefault();
+                
+                const password = document.getElementById("signup-password").value;
+                console.log(document.getElementById("signup-password").value)
+                var confirmPassword;
+                console.log(confirmBtn.style.maxHeight)
+                var flag=1;
+                if(confirmBtn.style.maxHeight=="0px"){
+                    confirmPassword = document.getElementById("signup-password").value;
+                    flag=0;
+                }
+                else
+                confirmPassword = document.getElementById("signup-confirm-password").value;
+
+                console.log(password);
+                console.log(confirmPassword);
+
+
+                if (password !== confirmPassword ) {
+                    passwordMatchError.style.display = "block";
+                } else {
+                    passwordMatchError.style.display = "none";
+                    
+                    if(!flag){
+                        var data={
+                            mail:document.getElementById("email").value,
+                            password:password,
+                        }
+                        $.ajax({
+                        type:"POST",
+                        url:"/login",
+                        data:JSON.stringify(data),
+                        contentType:"application/json;charset=utf-8",
+                        dataType:"json",
+                        success:function(response){
+                            console.log(response);
+                            window.location.href = "/home";
+                        },
+                        error:function(error){
+                            console.error(error);
+                            alert(error.responseJSON.message);
+                        }
+                    });
+                        return;
+                    }
+
+
+                    var data={
+                        name:document.getElementById("Username").value,
+                        mail:document.getElementById("email").value,
+                        password:password,
+                    }
+                    console.log(data);
+                    
+                    $.ajax({
+                        type:"POST",
+                        url:"/register",
+                        data:JSON.stringify(data),
+                        contentType:"application/json;charset=utf-8",
+                        dataType:"json",
+                        success:function(response){
+                            console.log(response);
+                            window.location.href = "/home";
+                        },
+                        error:function(error){
+                            console.error(error);
+                            alert(error.responseJSON.message);
+                        }
+                    });
+                    // Add your signup validation and registration logic here
+                    // For this example, let's assume successful registration always
+
+                    // Redirect to index.html after successful registration
+                    
+                }
+            });
+            
+        });
+        
+    </script>
+</body>
+</html>
